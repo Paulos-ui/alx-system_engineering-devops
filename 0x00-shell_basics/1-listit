@@ -1,2 +1,4 @@
-#!/bin/bash 
-Applications    Documents   Dropbox Movies Picture  Desktop Downloads   Library Music Public
+#!/bin/bash
+0-current_working_directory
+1-listit
+README.md
