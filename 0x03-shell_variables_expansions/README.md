@@ -1,1 +1,1 @@
-myfirstreadme
+myfirstreadme on shell variables expansions
