@@ -13,3 +13,5 @@ In this project i learnt more about firewall and how to use it on server
     + 100-port_forwarding: ufw configuration file that configures a firewall to redirect port 8080/TCP to port 80/TCP.
 
 
+Note to check for the port forwarding on your web, check your files: /etc/default/ufw and /etc/ufw/before.rules
+
