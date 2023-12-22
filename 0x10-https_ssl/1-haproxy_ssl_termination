@@ -1,47 +1,35 @@
 global
-    log /dev/log local0
-    log /dev/log local1 notice
-    chroot /var/lib/haproxy
-    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
-    stats timeout 30s
-    tune.ssl.default-dh-param 2048
-    user haproxy
-    group haproxy
-    daemon
+        log /dev/log    local0
+        log /dev/log    local1 notice
+        chroot /var/lib/haproxy
+        stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+        stats timeout 30s
+        user haproxy
+        group haproxy
+        daemon
+
+        tune.ssl.default-dh-param 2048
 
 defaults
-    log global
-    mode http
-    option httplog
-    option dontlognull
-    timeout connect 5000
-    timeout client 50000
-    timeout server 50000
+        log     global
+        mode    http
+        option  httplog
+        option  dontlognull
+        timeout connect 5000
+        timeout client  50000
+        timeout server  50000
+        option  forwardfor
+        option  http-server-close
 
+         frontend www-http
+         bind 0.0.0.0:80
+         default_backend web-backend
 
-frontend www-http
-    bind *:80
-    mode http
-    http-request add-header X-Forwarded-Proto http
-    default_backend web-http-backend
+         frontend www-https
+         bind *:443 ssl crt /etc/letsencrypt/live/www.toppaulos.tech/www.toppaulos.tech.pem
+         default_backend web-backend
 
-frontend www-https
-    bind *:443 ssl crt /etc/letsencrypt/live/www.toppaulos.tech/www.toppaulos.tech.pem
-    mode http
-    http-request set-header X-Forwarded-Proto https
-    acl letsencrypt-acl path_beg /.well-known/acme-challenge/
-    use_backend letsencrypt-backend if letsencrypt-acl
-    default_backend web-https-backend
-
-backend web-http-backend
-    balance roundrobin
-    server 180353-web-01 54.236.27.1:80 check
-    server 180353-web-02 52.23.177.124:80 check
-
-backend web-https-backend
-    balance roundrobin
-    server 180353-web-01 54.236.27.1:443 check ssl verify none
-    server 180353-web-02 52.23.177.124:443 check ssl verify none
-
-backend letsencrypt-backend
-    server letsencrypt-server 127.0.0.1:54321
+        backend web-backend
+        balance roundrobin
+        server 180353-web-01 54.236.27.1:80 check
+        server 180353-web-02 52.23.177.124:80 check
