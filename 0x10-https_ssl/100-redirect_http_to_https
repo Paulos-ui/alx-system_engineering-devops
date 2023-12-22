@@ -37,13 +37,3 @@ backend web-backend
         balance roundrobin
         server 180353-web-01 54.236.27.1:80 check
         server 180353-web-02 52.23.177.124:80 check
-
-
-
-
-
-
-
-
-
-
