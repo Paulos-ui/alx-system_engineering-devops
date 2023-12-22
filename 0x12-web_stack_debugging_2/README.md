@@ -17,5 +17,5 @@ In this project, it is all abouut web debugging and this was the third in a seri
   +  100-fix_in_7_lines_or_less: Bash script that fixes a web server to run Nginx listening on port 8080 as the nginx user.
   +  7 lines long.
 
-<b NOTE: /b> Working on webstack deugging
+__NOTE:__ _Working on webstack deugging_
 
