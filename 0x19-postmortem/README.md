@@ -2,10 +2,10 @@
 
 # Overview of the issue: 
 
-    An outage occurred on an isolated Ubuntu 14.04 container running an Apache web server. GET requests on the server led to 500 Internal Server Error's, when the expected response was an HTML file 
++    An outage occurred on an isolated Ubuntu 14.04 container running an Apache web server. GET requests on the server led to 500 Internal Server Error's, when the expected response was an HTML file 
 
 ## Duration:  
-     The outage occurred on January 19, 2024, from 9:00am to 11:30am (PT)
+ +    The outage occurred on January 19, 2024, from 9:00am to 11:30am (PT)
 
 ## Root Cause: 
    The root cause was identified as a misconfiguration in the Apache web server's virtual host settings.
