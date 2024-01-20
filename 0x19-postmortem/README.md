@@ -1,6 +1,7 @@
 # Postmortem
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Overview of the issue: 
+
     An outage occurred on an isolated Ubuntu 14.04 container running an Apache web server. GET requests on the server led to 500 Internal Server Error's, when the expected response was an HTML file 
 
 ## Duration:  
@@ -8,7 +9,6 @@
 
 ## Root Cause: 
    The root cause was identified as a misconfiguration in the Apache web server's virtual host settings.
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # Timeline:
